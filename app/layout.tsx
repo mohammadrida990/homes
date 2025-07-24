@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import { AuthProvider } from "@/context/auth";
+import AuthButtons from "@/components/auth-buttons";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +30,33 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AuthProvider>
+          <nav className="z-10 relative flex justify-between items-center bg-sky-950 p-5 h-24 text-white">
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-3xl uppercase tracking-widest"
+            >
+              {/* <HomeIcon /> */}
+              <span>Fire Homes</span>
+            </Link>
+
+            <ul className="flex items-center gap-6">
+              <li>
+                <Link
+                  href="/property-search"
+                  className="hover:underline uppercase tracking-widest"
+                >
+                  Property search
+                </Link>
+              </li>
+
+              <li>
+                <AuthButtons />
+              </li>
+            </ul>
+          </nav>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

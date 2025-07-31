@@ -4,6 +4,8 @@ import "./globals.css";
 import Link from "next/link";
 import { AuthProvider } from "@/context/auth";
 import AuthButtons from "@/components/auth-buttons";
+import { HomeIcon } from "lucide-react";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +38,7 @@ export default function RootLayout({
               href="/"
               className="flex items-center gap-2 text-3xl uppercase tracking-widest"
             >
-              {/* <HomeIcon /> */}
+              <HomeIcon />
               <span>Fire Homes</span>
             </Link>
 
@@ -56,6 +58,8 @@ export default function RootLayout({
             </ul>
           </nav>
           {children}
+
+          <Toaster />
         </AuthProvider>
       </body>
     </html>

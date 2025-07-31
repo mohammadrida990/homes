@@ -1,3 +1,4 @@
+import { Firestore, getFirestore } from "firebase-admin/firestore";
 import { getApps, ServiceAccount } from "firebase-admin/app";
 import admin from "firebase-admin";
 import { Auth, getAuth } from "firebase-admin/auth";
@@ -17,6 +18,7 @@ const serviceAccount = {
   universe_domain: process.env.NEXT_PUBLIC_FIREBASE_UNIVERSE_DOMAIN!,
 };
 
+let firestore: Firestore;
 let auth: Auth;
 const currentApps = getApps();
 
@@ -24,10 +26,29 @@ if (!currentApps.length) {
   const app = admin.initializeApp({
     credential: admin.credential.cert(serviceAccount as ServiceAccount),
   });
+
+  firestore = getFirestore(app);
   auth = getAuth(app);
 } else {
   const app = currentApps[0];
+
+  firestore = getFirestore(app);
   auth = getAuth(app);
 }
 
-export { auth };
+export { firestore, auth };
+
+export const getTotalPages = async (
+  firestoreQuery: FirebaseFirestore.Query<
+    FirebaseFirestore.DocumentData,
+    FirebaseFirestore.DocumentData
+  >,
+  pageSize: number
+) => {
+  const queryCount = await firestoreQuery.count().get();
+  const countData = queryCount.data();
+  const totalCount = countData?.count || 0;
+  const totalPages = Math.ceil(totalCount / pageSize);
+
+  return totalPages;
+};

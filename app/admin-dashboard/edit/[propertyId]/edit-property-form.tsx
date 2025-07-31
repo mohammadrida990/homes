@@ -6,10 +6,15 @@ import { propertySchema } from "@/validation/propertySchema";
 import { SaveIcon } from "lucide-react";
 import React from "react";
 import { z } from "zod";
+import { updateProperty } from "./actions";
+import { useAuth } from "@/context/auth";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 type Props = Property;
 
 const EditPropertyForm = ({
+  id,
   address1,
   address2,
   city,
@@ -21,8 +26,23 @@ const EditPropertyForm = ({
   status,
 }: // images = [],
 Props) => {
+  const auth = useAuth();
+  const router = useRouter();
+
   const handleSubmit = async (data: z.infer<typeof propertySchema>) => {
-    console.log(data);
+    const token = await auth?.currentUser?.getIdToken();
+    if (!token) {
+      return;
+    }
+
+    await updateProperty({ ...data, id }, token);
+
+    toast.success("Success!", {
+      description: "Property updated",
+      className: "bg-green-500! text-white",
+    });
+
+    router.push("/admin-dashboard");
   };
 
   return (

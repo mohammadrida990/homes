@@ -9,7 +9,7 @@ const EditProperty = async ({ params }: { params: Promise<any> }) => {
   const paramsValue = await params;
 
   const property = await getPropertyById(paramsValue.propertyId);
-  console.log(property);
+
   return (
     <div>
       <Breadcrumbs
@@ -40,6 +40,7 @@ const EditProperty = async ({ params }: { params: Promise<any> }) => {
               bathrooms={property.bathrooms}
               description={property.description}
               status={property.status}
+              images={property.images || []}
             />
           </CardContent>
         </CardHeader>

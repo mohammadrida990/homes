@@ -24,8 +24,8 @@ const EditPropertyForm = ({
   description,
   price,
   status,
-}: // images = [],
-Props) => {
+  images = [],
+}: Props) => {
   const auth = useAuth();
   const router = useRouter();
 
@@ -35,7 +35,18 @@ Props) => {
       return;
     }
 
-    await updateProperty({ ...data, id }, token);
+    const { images, ...rest } = data;
+
+    const response = await updateProperty({ ...rest, id }, token);
+
+    if (!!response?.error) {
+      toast.error("Error!", {
+        description: response?.message || "an error occurred",
+        duration: 3000,
+        icon: "⚠️",
+      });
+      return;
+    }
 
     toast.success("Success!", {
       description: "Property updated",
@@ -64,7 +75,7 @@ Props) => {
           description,
           price,
           status,
-          // images,
+          images: images.map((image) => ({ id: image, url: image })),
         }}
       />
     </div>

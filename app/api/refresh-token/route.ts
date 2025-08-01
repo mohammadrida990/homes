@@ -43,4 +43,3 @@ export const GET = async (request: NextRequest) => {
     return NextResponse.redirect(new URL("/", request.url));
   }
 };
-// https://youtu.be/G2HO6QfDczo?t=3409

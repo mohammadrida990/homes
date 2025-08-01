@@ -23,6 +23,7 @@ import {
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
+import MultiImageUploader, { ImageUpload } from "./multi-image-uploader";
 
 type Props = {
   submitButtonLabel: React.ReactNode;
@@ -46,6 +47,7 @@ const PropertyForm = ({
       bedrooms: 0,
       bathrooms: 0,
       status: "draft",
+      images: [],
     },
     ...defaultValues,
   };
@@ -222,6 +224,29 @@ const PropertyForm = ({
             />
           </fieldset>
         </div>
+
+        <FormField
+          control={form.control}
+          name="images"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <MultiImageUploader
+                  onImagesChange={(images: ImageUpload[]) => {
+                    form.setValue("images", images);
+                  }}
+                  images={field.value}
+                  // urlFormatter={(image) =>
+                  //   image.url.startsWith("https")
+                  //     ? image.url
+                  //     : `https://ik.imagekit.io/owhih0gqm/properties/${image.url}`
+                  // }
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <Button
           type="submit"

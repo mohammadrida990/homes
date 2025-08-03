@@ -17,7 +17,8 @@ export const GET = async (request: NextRequest) => {
 
   try {
     const response = await fetch(
-      `https://securetoken.googleapis.com/v1/token?key=AIzaSyCfRtkvOmgLZqeqa-j_tIHV8_cRTRffprI`,
+      `https://securetoken.googleapis.com/v1/token?key=${process.env
+        .NEXT_PUBLIC_FIREBASE_API_KEY!}`,
       {
         method: "POST",
         headers: {

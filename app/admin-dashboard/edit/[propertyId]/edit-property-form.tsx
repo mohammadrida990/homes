@@ -35,7 +35,7 @@ const EditPropertyForm = ({
       return;
     }
 
-    const { images, ...rest } = data;
+    const { images: newImages, ...rest } = data;
 
     const response = await updateProperty({ ...rest, id }, token);
 
@@ -47,6 +47,10 @@ const EditPropertyForm = ({
       });
       return;
     }
+
+    // const imagesToDelete = images.filter(
+    //   (image) => !newImages.find((newImage) => newImage.url === image)
+    // );
 
     toast.success("Success!", {
       description: "Property updated",

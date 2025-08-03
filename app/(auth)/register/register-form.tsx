@@ -71,6 +71,7 @@ export default function RegisterForm() {
               );
             }}
           />
+
           <FormField
             control={form.control}
             name="email"
@@ -86,6 +87,7 @@ export default function RegisterForm() {
               );
             }}
           />
+
           <FormField
             control={form.control}
             name="password"
@@ -101,6 +103,7 @@ export default function RegisterForm() {
               );
             }}
           />
+
           <FormField
             control={form.control}
             name="passwordConfirm"
@@ -120,10 +123,13 @@ export default function RegisterForm() {
               );
             }}
           />
+
           <Button type="submit">Register</Button>
+
           <div className="text-center">or</div>
         </fieldset>
       </form>
+
       <ContinueWithGoogleButton />
     </Form>
   );

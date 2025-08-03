@@ -12,11 +12,13 @@ export default function Register() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-3xl font-bold">Register</CardTitle>
+        <CardTitle className="font-bold text-3xl">Register</CardTitle>
       </CardHeader>
+
       <CardContent>
         <RegisterForm />
       </CardContent>
+
       <CardFooter>
         Already have an account?
         <Link href="/login" className="pl-2 underline">

@@ -59,7 +59,7 @@ export default function RootLayout({
           </nav>
           {children}
 
-          <Toaster />
+          <Toaster closeButton richColors />
         </AuthProvider>
       </body>
     </html>

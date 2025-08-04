@@ -7,6 +7,11 @@ import numeral from "numeral";
 import { BathIcon, BedIcon, HomeIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import ToggleFavoriteButton from "./toggle-favorite-button";
+import { cookies } from "next/headers";
+import { DecodedIdToken } from "firebase-admin/auth";
+import { auth } from "@/firebase/server";
+import { getUserFavorites } from "@/data/favorites";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const PropertySearch = async ({ searchParams }: { searchParams: any }) => {
@@ -34,6 +39,16 @@ const PropertySearch = async ({ searchParams }: { searchParams: any }) => {
       status: ["for-sale"],
     },
   });
+
+  const userFavorites = await getUserFavorites();
+
+  const cookieStore = await cookies();
+  const token = cookieStore.get("firebaseAuthToken")?.value;
+  let verifiedToken: DecodedIdToken | null;
+
+  if (token) {
+    verifiedToken = await auth.verifyIdToken(token);
+  }
 
   return (
     <div className="mx-auto max-w-screen-lg">
@@ -67,12 +82,12 @@ const PropertySearch = async ({ searchParams }: { searchParams: any }) => {
             <Card key={property.id} className="overflow-hidden">
               <CardContent className="px-0 pb-0">
                 <div className="relative flex flex-col justify-center items-center bg-sky-50 h-40 text-zinc-400">
-                  {/* {(!verifiedToken || !verifiedToken.admin) && (
-                    <ToggleFavouriteButton
-                      isFavourite={userFavourites[property.id]}
+                  {(!verifiedToken || !verifiedToken.admin) && (
+                    <ToggleFavoriteButton
+                      isFavorite={userFavorites[property.id]}
                       propertyId={property.id}
                     />
-                  )}*/}
+                  )}
 
                   {!!property.images?.[0] && (
                     <Image

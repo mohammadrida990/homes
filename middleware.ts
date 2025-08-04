@@ -51,7 +51,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  if (decodedToken.admin && pathname.startsWith("/account/my-favourites")) {
+  if (decodedToken.admin && pathname.startsWith("/account/my-favorites")) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 

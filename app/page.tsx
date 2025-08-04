@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="relative flex justify-center items-center -mt-24 p-24 min-h-screen">
-      <Image fill className="object-cover" src="/hero.webp" alt="" />
+      <Image fill className="object-cover" src="/hero.jpg" alt="" />
 
       <div className="top-0 left-0 absolute bg-black/50 backdrop-blur-sm size-full" />
 

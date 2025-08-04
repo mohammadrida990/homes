@@ -63,7 +63,6 @@ export default function UpdatePasswordForm() {
       await updatePassword(user, data.newPassword);
       toast.success("Password updated successfully");
       form.reset();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       console.log({ e });
       toast(

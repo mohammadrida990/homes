@@ -7,7 +7,6 @@ import PropertiesTable from "./properties-table";
 export default async function AdminDashboard({
   searchParams,
 }: {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   searchParams?: Promise<any>;
 }) {
   const searchParamsValue = await searchParams;

@@ -24,7 +24,6 @@ export const registerUser = async (data: {
       email: data.email,
       password: data.password,
     });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {
     return {
       error: true,

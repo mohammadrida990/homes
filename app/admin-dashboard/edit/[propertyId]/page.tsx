@@ -4,7 +4,6 @@ import { getPropertyById } from "@/data/properties";
 import React from "react";
 import EditPropertyForm from "./edit-property-form";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const EditProperty = async ({ params }: { params: Promise<any> }) => {
   const paramsValue = await params;
 

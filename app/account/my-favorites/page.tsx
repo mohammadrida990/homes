@@ -19,7 +19,6 @@ import { getPropertiesById } from "@/data/properties";
 export default async function MyFavorites({
   searchParams,
 }: {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   searchParams: Promise<any>;
 }) {
   const searchParamsValues = await searchParams;
@@ -63,7 +62,6 @@ export default async function MyFavorites({
           <TableBody>
             {paginatedFavorites.map((favorite) => {
               const property = properties.find(
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (property: any) => property.id === favorite
               );
 

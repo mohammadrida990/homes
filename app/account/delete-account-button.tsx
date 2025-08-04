@@ -45,7 +45,6 @@ export default function DeleteAccountButton() {
         await removeToken();
 
         toast.success("Your account was deleted successfully");
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (e: any) {
         toast.error(
           e.code === "auth/invalid-credential"

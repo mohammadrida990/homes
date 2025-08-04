@@ -11,6 +11,5 @@ export type Property = {
   bathrooms: number;
   price: number;
   status: PropertyStatus;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   images?: any[];
 };

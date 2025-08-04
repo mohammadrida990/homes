@@ -15,7 +15,6 @@ import BackButton from "./back-button";
 
 export const dynamic = "force-static";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Property({ params }: { params: Promise<any> }) {
   const paramsValue = await params;
   const property = await getPropertyById(paramsValue.propertyId);

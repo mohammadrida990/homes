@@ -15,7 +15,6 @@ export default function ContinueWithGoogleButton() {
         try {
           await auth?.loginWithGoogle();
           router.refresh();
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {}
       }}
       className="w-full"

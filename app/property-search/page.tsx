@@ -13,7 +13,6 @@ import { DecodedIdToken } from "firebase-admin/auth";
 import { auth } from "@/firebase/server";
 import { getUserFavorites } from "@/data/favorites";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const PropertySearch = async ({ searchParams }: { searchParams: any }) => {
   const searchParamsValues = await searchParams;
 

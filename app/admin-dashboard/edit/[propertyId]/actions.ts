@@ -33,5 +33,5 @@ export const updateProperty = async (data: Property, token: string) => {
       updatedBy: verifiedToken.uid,
     });
 
-  revalidatePath(`/admin-dashboard/edit/${id}`);
+  revalidatePath(`/property/${id}`);
 };

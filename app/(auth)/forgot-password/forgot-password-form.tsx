@@ -22,6 +22,7 @@ export default function ForgotPasswordForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+
       <Button className="w-full" type="submit">
         Reset Password
       </Button>

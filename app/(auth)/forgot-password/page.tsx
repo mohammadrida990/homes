@@ -11,12 +11,14 @@ export default function ForgotPassword() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-3xl font-bold">Forgot Password</CardTitle>
+        <CardTitle className="font-bold text-3xl">Forgot Password</CardTitle>
+
         <CardDescription>
           Enter your email address below and we will send you a link to reset
           your password
         </CardDescription>
       </CardHeader>
+
       <CardContent>
         <ForgotPasswordForm />
       </CardContent>

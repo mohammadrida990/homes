@@ -12,7 +12,8 @@ export default function Home() {
 
       <div className="z-10 relative flex flex-col gap-10 text-white">
         <h1 className="max-w-screen-md font-semibold text-5xl text-center uppercase tracking-widest">
-          Find your new home with Fire Homes
+          Discover exceptional properties tailored to your lifestyle with Homes
+          App.
         </h1>
 
         <Button asChild className="gap-5 mx-auto p-8 text-lg">

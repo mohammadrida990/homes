@@ -14,6 +14,7 @@ import { EyeIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import RemoveFavoriteButton from "./remove-favorite-button";
+import { getPropertiesById } from "@/data/properties";
 
 export default async function MyFavorites({
   searchParams,
@@ -37,8 +38,8 @@ export default async function MyFavorites({
     redirect(`/account/my-favorites?page=${totalPages}`);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const properties = {} as any;
+  const properties = await getPropertiesById(paginatedFavorites);
+
   return (
     <div className="mx-auto max-w-screen-lg">
       <h1 className="mt-5 py-4 font-bold text-4xl">My favorites</h1>
@@ -65,6 +66,7 @@ export default async function MyFavorites({
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (property: any) => property.id === favorite
               );
+
               const address = [
                 property?.address1,
                 property?.address2,

@@ -14,6 +14,7 @@ export default function RemoveFavoriteButton({
 }) {
   const auth = useAuth();
   const router = useRouter();
+
   return (
     <Button
       variant="outline"
@@ -22,6 +23,7 @@ export default function RemoveFavoriteButton({
         if (!tokenResult) {
           return;
         }
+
         await removeFavorite(propertyId, tokenResult.token);
         toast.success("Property removed from favorites");
         router.refresh();
